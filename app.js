@@ -13,7 +13,34 @@ dotenv.config();
 app.use(cors());
 //envia la información en formato json
 app.use(express.json());
+
+
 //no permite enviar formularios
 app.use(express.urlencoded({
-    extended: false;
+    extended: false,
 }))
+
+//create
+app.post("/insert",(request,response)=>{
+
+});
+
+
+//read
+app.get("/getAll",(request,response)=>{
+    response.json({
+        success: true
+    });
+})
+
+
+
+//update
+
+
+
+//delete
+
+app.listen(process.env.PORT,()=>{
+    console.log("app is running");
+})
