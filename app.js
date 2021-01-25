@@ -9,6 +9,10 @@ const dotenv = require("dotenv");
 
 //permite utilizar todas las propiedades del dotenv
 dotenv.config();
+
+//llamado del dbService
+const dbService = require("./dbService");
+
 //utiliza las propiedades del cors
 app.use(cors());
 //envia la información en formato json
