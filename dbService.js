@@ -34,14 +34,13 @@ class DbService{
             const response = await new Promise((
                 resolve,reject
             ) =>{
-                const query = "SELECT * FROM nombres";
+                const query = "SELECT * FROM nombres;";
                 connection.query(query,(err,result) =>{
-                    if (err) {reject(new Error(err.message));
-                        
-                    }
+                    if (err) {reject(new Error(err.message));}
+                    resolve (result);
                 })
             })
-
+            return response
         }
         catch (error){
             console.log(error);

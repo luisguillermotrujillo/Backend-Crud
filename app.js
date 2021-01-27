@@ -26,16 +26,20 @@ app.use(express.urlencoded({
 
 //create
 app.post("/insert",(request,response)=>{
-
+console.log(request.body);
 });
 
 
 //read
 app.get("/getAll",(request,response)=>{
-    response.json({
-        success: true
+    const db = dbService.getDbServiceInstance();
+    const result = db.getAllData();
+
+    result 
+    .then(data => response.json({data: data}))
+    .catch(err => console.log(err));
     });
-})
+
 
 
 
