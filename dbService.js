@@ -46,5 +46,24 @@ class DbService{
             console.log(error);
         }
     }
+
+    async insertNewName(name){
+        try{
+            const dateAdded = new Date();
+            const insertId = await new Promise((resolve,reject) =>{
+                const query = "INSERT INTO nombres(Name,date_added)VALUES(?,?);";
+                connection.query(query,[name, dateAdded],(err,result) =>{
+                    if (err) reject (new Error(err.message));
+                        resolve (result);
+                    
+                })
+            });
+            console.log(insertId);
+            //return response;
+        }
+        catch(error){
+            console.log(error);
+        }
+    }
 }
 module.exports = DbService;
