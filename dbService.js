@@ -60,6 +60,11 @@ class DbService{
             });
             console.log(insertId);
             //return response;
+            return{
+                id : insertId,
+                Name:name,
+                date_added:dateAdded
+            }
         }
         catch(error){
             console.log(error);
