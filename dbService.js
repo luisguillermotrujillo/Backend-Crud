@@ -72,17 +72,19 @@ class DbService{
     }
     async deleteRowById(id){
         try{
-            id = parsetInt(id,10);
+            id = parseInt(id,10);
             const response = await new Promise((resolve,reject) =>{
                 const query = "DELETE FROM nombres WHERE id = ? ";
                 connection.query(query,[id],(err,result) =>{
                     if (err) reject(new Error(err.message));
-                    resolve(result);
+                    resolve(result.affectedRows);
                 })
             })
-            console.log(response);
+            return response === 1 ? true: false ;
+            //console.log(response);
         }catch (error){
             console.log(error);
+            return false;
         }
     }
 }
