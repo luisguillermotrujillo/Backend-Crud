@@ -52,6 +52,10 @@ app.get("/getAll",(request,response)=>{
 
 
 //update
+app.patch("/update",(request,response) =>{
+    const {id, name} = request.body;
+    const db = dbService.getDbServiceInstance();
+})
 
 
 
