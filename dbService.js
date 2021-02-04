@@ -94,10 +94,11 @@ class DbService{
                 const query = "UPDATE nombres SET Name = ? WHERE id = ? ";
                 connection.query(query,[name, id],(err,result) =>{
                     if (err)reject(new Error(err,message));
-                    resolve (result.affectedRows);
+                    resolve (result);
                 })
             })
-            return response === 1 ? true: false; 
+            console.log(response);
+            //return response === 1 ? true: false; 
         }catch(error){
             console.log(error);
             return false;
