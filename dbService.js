@@ -94,16 +94,31 @@ class DbService{
                 const query = "UPDATE nombres SET Name = ? WHERE id = ? ";
                 connection.query(query,[name, id],(err,result) =>{
                     if (err)reject(new Error(err,message));
-                    resolve (result);
+                    resolve (result.affectedRows);
                 })
             })
-            console.log(response);
-            //return response === 1 ? true: false; 
+            //console.log(response);
+            return response === 1 ? true: false; 
         }catch(error){
             console.log(error);
             return false;
         } 
     }
+    async searchByName(name){
+                try{
+                    const response = await new Promise((resolve,reject) =>{
+                        const query = "SELECT * FROM nombres WHERE name =?;";
+                        connection.query(query,[name],(err,result) =>{
+                            if (err)reject(new Error(err.message));
+                                resolve(result);
+                            
+                        })
+                    })
+                    return response;
+                }catch (error){      
+                console.log(error);
+                }
+            }
 
 }
 
